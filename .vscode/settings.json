@@ -1,0 +1,10 @@
+{
+  "prettier.arrowParens": "always",
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "eslint.autoFixOnSave": true
+}

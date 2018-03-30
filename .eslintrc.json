@@ -1,0 +1,20 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["hapi", "prettier", "prettier/react"],
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "hapi/hapi-scope-start": "off",
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true, "arrowParens": "always" }
+    ]
+  }
+}
