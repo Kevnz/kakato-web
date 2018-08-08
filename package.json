@@ -11,7 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "preprod": "npm run babel",
     "prod": "cross-env NODE_ENV=production node ./src/server",
-    "dev": "cross-env NODE_ENV=development nodemon ./src/server"
+    "dev": "cross-env NODE_ENV=development nodemon ./src/server",
+    "prestart": "npm run babel",
+    "start": "cross-env NODE_ENV=production node ./src/server"
   },
   "author": "",
   "license": "UNLICENSE",
@@ -45,6 +47,7 @@
     "hapi-swagger": "^9.1.1",
     "inert": "^5.1.0",
     "install": "^0.10.4",
+    "lodash": "^4.17.10",
     "mini.css": "^2.3.7",
     "mini.css-react": "^1.0.3",
     "mongodb": "^3.0.4",
@@ -55,6 +58,7 @@
     "react-if": "^2.2.2",
     "react-time": "^4.3.0",
     "react-timekeeper": "^1.0.7",
+    "rollbar": "^2.4.4",
     "twitter": "^1.7.1",
     "uuid": "^3.2.1",
     "vision": "^5.3.1",
@@ -65,8 +69,10 @@
     "eslint-config-hapi": "^11.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-hapi": "^4.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
     "jest": "^22.4.2",
     "jest-cli": "^22.4.2",
-    "nodemon": "^1.17.1"
+    "nodemon": "^1.17.1",
+    "prettier": "^1.14.0"
   }
 }

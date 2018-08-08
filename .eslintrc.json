@@ -4,7 +4,8 @@
     "node": true,
     "jest": true
   },
-  "extends": ["hapi", "prettier", "prettier/react"],
+  "extends": ["hapi", "prettier"],
+  "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module"
