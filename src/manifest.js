@@ -58,5 +58,9 @@ module.exports = [
   {
     plugin: require('./plugins/bang'),
     options: {}
+  },
+  {
+    plugin: require('./plugins/rollbar'),
+    options: {}
   }
 ];
