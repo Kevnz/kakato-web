@@ -55,6 +55,5 @@ module.exports = {
   version,
   multiple,
   once,
-  pkg,
-  dependencies
+  pkg
 };
