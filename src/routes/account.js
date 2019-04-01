@@ -33,6 +33,18 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/account',
+    config: {
+      pre: [{ method: GetUser, assign: 'user' }],
+      handler: (request, h) =>
+        h.view('account/index', {
+          title: 'Account Details Page',
+          user: request.pre.user
+        })
+    }
+  },
+  {
+    method: 'GET',
     path: '/account/new',
     config: {
       handler: (request, h) =>
