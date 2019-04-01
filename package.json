@@ -76,7 +76,7 @@
     "twitter": "^1.7.1",
     "uuid": "^3.3.2",
     "vision": "^5.4.4",
-    "xtconf": "^4.0.1"
+    "xtconf": "^4.1.0"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
