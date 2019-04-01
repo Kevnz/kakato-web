@@ -6,7 +6,7 @@ const LinkOutputSchema = Joi.object()
       .guid()
       .required()
       .description('Id of the Link')
-      .example(1),
+      .example('bffbd25b-1eb5-4781-adc7-e9f85c4dbf93'),
     name: Joi.string()
       .required()
       .description('name of the link')
@@ -23,8 +23,7 @@ const LinkOutputSchema = Joi.object()
       .example('This is a website that has a lot of items for sale'),
     tags: Joi.array()
       .items(Joi.string())
-      .description('Array of tags to classify the page')
-      .example('shopping, store, purchase'),
+      .description('Array of tags to classify the page'),
     createdOn: Joi.date().default(Date.now, 'time of link was created'),
     updatedOn: Joi.date().default(Date.now, 'time of link was last edited')
   })
@@ -49,7 +48,6 @@ const LinkInputSchema = Joi.object()
     tags: Joi.array()
       .items(Joi.string())
       .description('Array of tags to classify the page')
-      .example('shopping, store, purchase')
   })
   .label('link');
 

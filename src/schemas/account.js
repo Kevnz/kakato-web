@@ -6,7 +6,7 @@ const AccountOutputSchema = Joi.object()
       .guid()
       .required()
       .description('Id of the Link')
-      .example(1),
+      .example('bffbd25b-1eb5-4781-adc7-e9f85c4dbf93'),
     firstName: Joi.string()
       .required()
       .description('The first name of the user')

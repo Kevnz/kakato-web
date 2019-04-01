@@ -2,5 +2,11 @@
   "prettier.arrowParens": "always",
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000CC",
+    "titleBar.activeBackground": "#2cdfff",
+    "titleBar.inactiveBackground": "#2cf8ffcc"
+  }
 }
