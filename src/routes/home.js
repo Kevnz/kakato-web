@@ -53,5 +53,14 @@ module.exports = [
         file: 'mini-dark.css'
       }
     }
+  },
+  {
+    method: 'GET',
+    path: '/robots.txt',
+    config: {
+      handler: {
+        file: 'robots.txt'
+      }
+    }
   }
 ];
