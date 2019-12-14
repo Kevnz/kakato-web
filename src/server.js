@@ -1,7 +1,7 @@
 require('xtconf')();
 
-const Hapi = require('hapi');
-const Bell = require('bell');
+const Hapi = require('@hapi/hapi');
+const Bell = require('@hapi/bell');
 const Path = require('path');
 const HapiReactViews = require('hapi-react-views');
 const AuthBasic = require('hapi-auth-basic');

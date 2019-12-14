@@ -5,13 +5,13 @@ module.exports = [
     plugin: require('blipp')
   },
   {
-    plugin: require('vision')
+    plugin: require('@hapi/vision')
   },
   {
-    plugin: require('inert')
+    plugin: require('@hapi/inert')
   },
   {
-    plugin: require('good'),
+    plugin: require('@hapi/good'),
     options: {
       ops: {
         interval: 30 * 200
@@ -19,7 +19,7 @@ module.exports = [
       reporters: {
         console: [
           {
-            module: 'good-console',
+            module: '@hapi/good-console',
             args: [{ log: '*', response: '*' }]
           },
           'stdout'
