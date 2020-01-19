@@ -8,6 +8,8 @@ module.exports = async () => {
   });
 
   await each(links, async (link) => {
+    console.info('read', link.url);
+    console.info('link', JSON.stringify(link, null, 2));
     const read = await process(link.url, link);
     await db.links.save(Object.assign({}, link, read));
   });
