@@ -7,8 +7,16 @@ const HapiReactViews = require('hapi-react-views');
 const AuthBasic = require('hapi-auth-basic');
 const AuthCookie = require('hapi-auth-cookie');
 const CorsHeaders = require('hapi-cors-headers');
-const Manifest = require('./manifest');
+const Rollbar = require('rollbar');
 
+const Manifest = require('./manifest');
+const Updater = require('./services/update-links');
+
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
 if (process.env.NODE_ENV !== 'production') {
   require('babel-core/register')({ presets: ['react', 'env', 'stage-0'] });
   require('babel-polyfill');
@@ -126,6 +134,14 @@ const start = async () => {
   }
 
   console.log('🚀 Server running at:', server.info.uri);
+  Updater()
+    .then(() => {
+      console.info('updated');
+    })
+    .catch((err) => {
+      console.error('updater error', err);
+      rollbar.error(err);
+    });
 };
 
 process.on('SIGINT', async () => {
