@@ -8,8 +8,6 @@ const grabber = require('@brightleaf/grab');
 const Readability = require('./readability');
 
 const { JSDOM } = jsdom;
-const urlz =
-  'https://schneider.dev/blog/elixir-phoenix-absinthe-graphql-react-apollo-absurdly-deep-dive/';
 
 module.exports = async (url, info) => {
   console.info('Process URL');
