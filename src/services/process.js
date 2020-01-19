@@ -2,6 +2,7 @@ const fs = require('fs');
 
 const path = require;
 const got = require('got');
+const fetch = require('node-fetch');
 const periodical = require('kindle-periodical');
 const jsdom = require('jsdom');
 const grabber = require('@brightleaf/grab');
@@ -11,9 +12,12 @@ const { JSDOM } = jsdom;
 
 module.exports = async (url, info) => {
   console.info('Process URL', url);
-  const response = await got(url);
+  // const response = await got(url);
 
-  const doc = new JSDOM(response.body, {
+  const res = await fetch('https://api.github.com/users/github');
+  const bod = await res.text();
+
+  const doc = new JSDOM(bod, {
     url
   });
   const reader = new Readability(doc.window.document);
