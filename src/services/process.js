@@ -19,6 +19,7 @@ module.exports = async (url, info) => {
   const reader = new Readability(doc.window.document);
   const article = reader.parse();
   console.info('The Article Title', article.title);
+  /*
   const { title, content } = article;
   const slug = title.replace(' ', '-').toLowerCase();
   const coverImage = await grabber(url);
@@ -43,7 +44,7 @@ module.exports = async (url, info) => {
       }
     ]
   };
-  /*
+
   fs.writeFileSync(
     `./articles/${slug}.json`,
     JSON.stringify(article, null, 2),
@@ -52,7 +53,7 @@ module.exports = async (url, info) => {
     }
   );
   await periodical.create(bookData, {
-    targetFolder: path.join(process.cwd(), 'articles') // where should the mobi file go
+    targetFolder: path.join(process.cwd(), 'articles')
   });
   */
   return article;
