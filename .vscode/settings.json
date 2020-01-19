@@ -1,12 +1,79 @@
 {
-  "prettier.arrowParens": "always",
-  "prettier.singleQuote": true,
+  "eslint.autoFixOnSave": true,
   "editor.formatOnSave": true,
-  "eslint.alwaysShowStatus": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
   "workbench.colorCustomizations": {
-    "titleBar.activeForeground": "#000",
-    "titleBar.inactiveForeground": "#000000CC",
-    "titleBar.activeBackground": "#2cdfff",
-    "titleBar.inactiveBackground": "#2cf8ffcc"
+    "titleBar.activeBackground": "#132B40",
+    "titleBar.inactiveBackground": "#132B40CC",
+    "titleBar.activeForeground": "#F27127",
+    "titleBar.inactiveForeground": "#F27127CC",
+    "titleBar.border": "#A61C28",
+    "activityBar.foreground": "#F27127",
+    "activityBar.background": "#132B40",
+    "activityBarBadge.foreground": "#fff",
+    "tab.activeBorder": "#f02020",
+    "tab.activeBorderTop": "#f02020",
+    "tab.activeBackground": "#326773",
+    "statusBar.background": "#132B40",
+    "statusBar.border": "#A61C28",
+    "statusBar.foreground": "#F27127"
+  },
+  "vsicons.presets.jsOfficial": true,
+  "vsicons.presets.jsonOfficial": true,
+  "vsicons.associations.folders": [
+    {
+      "icon": "view",
+      "extensions": [
+        "ui"
+      ],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "helper",
+      "extensions": [
+        "tasks"
+      ],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "video",
+      "extensions": [
+        "casting"
+      ],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "db",
+      "extensions": [
+        "queries",
+        "migrations"
+      ],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "api",
+      "extensions": [
+        "core"
+      ],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "component",
+      "extensions": [
+        "features"
+      ],
+      "filename": true,
+      "format": "svg"
+    }
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }
