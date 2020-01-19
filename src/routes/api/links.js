@@ -73,7 +73,9 @@ module.exports = [
           userId: user.id
         };
         const readable = await process(url, linkToSave);
-        const saved = await request.db.links.save({...linkToSave, ...readable);
+        const saved = await request.db.links.save(
+          Object.assign({}, linkToSave, readable)
+        );
         console.info('Link Saved response', saved);
 
         return h.response(saved);
