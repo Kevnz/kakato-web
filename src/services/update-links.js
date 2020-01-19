@@ -3,9 +3,7 @@ const { db } = require('./db');
 const process = require('./process');
 
 module.exports = async () => {
-  const links = await db.links.find({
-    // content: { $exists: false }
-  });
+  const links = await db.links.find({});
 
   await each(links, async (link) => {
     console.info('read', link.url);
