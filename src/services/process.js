@@ -14,7 +14,7 @@ module.exports = async (url, info) => {
   console.info('Process URL', url);
   // const response = await got(url);
 
-  const res = await fetch('https://api.github.com/users/github');
+  const res = await fetch(url);
   const bod = await res.text();
 
   const doc = new JSDOM(bod, {
