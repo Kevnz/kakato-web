@@ -124,6 +124,7 @@ const start = async () => {
     console.log(err);
     process.exit(1);
   }
+
   console.log('🚀 Server running at:', server.info.uri);
 };
 
