@@ -25,6 +25,25 @@ module.exports = [
     }
   },
   {
+    method: 'GET',
+    path: '/api/v1/links/{linkId}',
+    config: {
+      auth: 'maioha',
+      tags: ['api', 'v1', 'links'],
+      description: 'Get all the links for a user',
+      response: {
+        schema: LinkOutputSchema
+      },
+      handler: async (request, h) => {
+        const link = await request.db.links.findOne({
+          id: request.params.linkId
+        });
+
+        return link;
+      }
+    }
+  },
+  {
     method: 'POST',
     path: '/api/v1/links',
     config: {
