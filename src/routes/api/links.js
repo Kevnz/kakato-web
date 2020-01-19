@@ -2,6 +2,8 @@ const Boom = require('boom');
 const Uuid = require('uuid/v1');
 const { LinkOutputSchema, LinkInputSchema } = require('../../schemas/link');
 
+const process = require('../../services/process');
+
 module.exports = [
   {
     method: 'GET',
@@ -42,7 +44,7 @@ module.exports = [
         const user = request.auth.credentials;
 
         const { name, url, tags, description } = request.payload;
-        console.log('payloiad', request.payload);
+        console.info('payload', request.payload);
         const linkToSave = {
           id: Uuid(),
           name,
@@ -51,8 +53,10 @@ module.exports = [
           description,
           userId: user.id
         };
-        const saved = await request.db.links.save(linkToSave);
-        console.log('saved', saved);
+        const readable = await process(url, linkToSave);
+        const saved = await request.db.links.save({...linkToSave, ...readable);
+        console.info('Link Saved response', saved);
+
         return h.response(saved);
       }
     }
