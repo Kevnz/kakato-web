@@ -23,6 +23,7 @@ module.exports = async (url, info) => {
   const reader = new Readability(doc.window.document);
   const article = reader.parse();
   console.info('The Article Title', article.title);
+  console.info('The Article ', JSON.stringify(article, null, 2));
   /*
   const { title, content } = article;
   const slug = title.replace(' ', '-').toLowerCase();
