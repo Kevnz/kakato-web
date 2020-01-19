@@ -24,6 +24,12 @@ const LinkOutputSchema = Joi.object()
     tags: Joi.array()
       .items(Joi.string())
       .description('Array of tags to classify the page'),
+    content: Joi.string()
+      .description('content of the link')
+      .example('This is a website that has a lot of items for sale'),
+    textContent: Joi.string()
+      .description('text content of the link')
+      .example('This is a website that has a lot of items for sale'),
     createdOn: Joi.date().default(Date.now, 'time of link was created'),
     updatedOn: Joi.date().default(Date.now, 'time of link was last edited')
   })
