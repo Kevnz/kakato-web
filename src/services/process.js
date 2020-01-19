@@ -10,7 +10,7 @@ const Readability = require('./readability');
 const { JSDOM } = jsdom;
 
 module.exports = async (url, info) => {
-  console.info('Process URL');
+  console.info('Process URL', url);
   const response = await got(url);
 
   const doc = new JSDOM(response.body, {

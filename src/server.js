@@ -139,7 +139,6 @@ const start = async () => {
       console.info('updated');
     })
     .catch((err) => {
-      console.info(process.env);
       console.error('updater error', err);
       rollbar.error(err);
     });
