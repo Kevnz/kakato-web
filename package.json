@@ -4,7 +4,7 @@
   "description": "Kakato - Scrumptious Links",
   "main": "index.js",
   "engines": {
-    "node": "10"
+    "node": "13"
   },
   "scripts": {
     "babel": "babel src/views --out-dir src/templates",
