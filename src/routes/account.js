@@ -23,8 +23,9 @@ module.exports = [
   {
     method: 'GET',
     path: '/account/details',
-    auth: { strategy: 'pihikete' },
+
     config: {
+      auth: { strategy: 'pihikete' },
       pre: [{ method: GetUser, assign: 'user' }],
       handler: (request, h) =>
         h.view('account/index', {
@@ -36,8 +37,9 @@ module.exports = [
   {
     method: 'GET',
     path: '/account',
-    auth: { strategy: 'pihikete' },
+
     config: {
+      auth: { strategy: 'pihikete' },
       pre: [{ method: GetUser, assign: 'user' }],
       handler: (request, h) =>
         h.view('account/index', {
