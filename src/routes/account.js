@@ -15,6 +15,7 @@ const verifyNewUser = async (request, h) => {
   if (user) {
     return Boom.preconditionFailed('A user with that email already exists');
   }
+
   return true;
 };
 
@@ -22,6 +23,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/account/details',
+    auth: { strategy: 'pihikete' },
     config: {
       pre: [{ method: GetUser, assign: 'user' }],
       handler: (request, h) =>
@@ -34,6 +36,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/account',
+    auth: { strategy: 'pihikete' },
     config: {
       pre: [{ method: GetUser, assign: 'user' }],
       handler: (request, h) =>
@@ -101,6 +104,7 @@ module.exports = [
             message: 'Login Failed'
           });
         }
+
         const credentials = {
           id: user.id,
           firstName: user.firstName,
@@ -112,6 +116,7 @@ module.exports = [
         if (!cookie) {
           cookie = user.id;
         }
+
         const sid = Uuid();
         console.log('cookie', cookie);
         //h.state('info', { id: user.id });
