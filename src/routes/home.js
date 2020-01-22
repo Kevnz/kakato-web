@@ -63,13 +63,20 @@ module.exports = [
   },
   {
     method: 'GET',
-    path:
-      '/.well-known/acme-challenge/MDjOwufrHO1jpRzI8lTRUhAh03W1xh2_eFrrYyLOQCU',
+    path: '/read/{linkId}',
     config: {
+      auth: { strategy: 'pihikete', mode: 'optional' },
+      pre: [{ method: require('../pre-handlers/get-link'), assign: 'link' }],
       handler: (request, h) => {
-        return 'MDjOwufrHO1jpRzI8lTRUhAh03W1xh2_eFrrYyLOQCU.xDFm06YXtA5_KFIUS-nChI4n9AKoEGBuT6Had_eqQ-A';
+        const value = request.state;
+        request.bang(`on home route session ${JSON.stringify(value, null, 4)}`);
+        console.info('read', request.pre.link);
+        return h.view('read', {
+          title: 'Kakato - Scrumptious Links',
+          isAuthenticated: request.auth.isAuthenticated,
+          link: request.pre.link
+        });
       }
     }
   }
-  //
 ];
