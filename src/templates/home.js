@@ -29,7 +29,9 @@ class HomeView extends Component {
       key: `link-key-${index}`
     }, React.createElement("a", {
       href: link.url
-    }, link.name), React.createElement(If, {
+    }, link.name), React.createElement("a", {
+      href: `/read/${link.id}`
+    }, "Read"), React.createElement(If, {
       condition: link.tweetedOn === undefined
     }, React.createElement(Then, null, React.createElement("form", {
       method: "POST",
