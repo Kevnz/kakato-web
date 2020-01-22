@@ -17,6 +17,7 @@ class HomeView extends Component {
     const links = this.props.links.map((link, index) => (
       <li key={`link-key-${index}`}>
         <a href={link.url}>{link.name}</a>
+        <a href={`/read/${link.id}`}>Read</a>
         <If condition={link.tweetedOn === undefined}>
           <Then>
             <form
