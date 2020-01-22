@@ -29,9 +29,7 @@ module.exports = [
         return h.view('secret', {
           title: 'Secret Page',
           isAuthenticated: request.auth.isAuthenticated,
-          name: `${request.auth.credentials.firstName} ${
-            request.auth.credentials.lastName
-          }`
+          name: `${request.auth.credentials.firstName} ${request.auth.credentials.lastName}`
         });
       }
     }
@@ -62,5 +60,16 @@ module.exports = [
         file: 'robots.txt'
       }
     }
+  },
+  {
+    method: 'GET',
+    path:
+      '/.well-known/acme-challenge/MDjOwufrHO1jpRzI8lTRUhAh03W1xh2_eFrrYyLOQCU',
+    config: {
+      handler: (request, h) => {
+        return 'MDjOwufrHO1jpRzI8lTRUhAh03W1xh2_eFrrYyLOQCU.xDFm06YXtA5_KFIUS-nChI4n9AKoEGBuT6Had_eqQ-A';
+      }
+    }
   }
+  //
 ];
