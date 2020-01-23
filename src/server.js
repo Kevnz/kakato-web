@@ -1,5 +1,5 @@
 require('xtconf')();
-
+console.info('START 1');
 const Hapi = require('@hapi/hapi');
 const Bell = require('@hapi/bell');
 const Path = require('path');
@@ -17,38 +17,48 @@ const rollbar = new Rollbar({
   captureUncaught: true,
   captureUnhandledRejections: true
 });
+
 if (process.env.NODE_ENV !== 'production') {
-  require('babel-core/register')({ presets: ['react', 'env', 'stage-0'] });
-  require('babel-polyfill');
+  console.log('Maybe?');
+  require('@babel/register')();
+  console.info('maybe again?');
+  //require('babel-polyfill');
+  console.info('maybe again?');
+
+  require.extensions['.css'] = (m, filename) => {
+    console.log('.css');
+  };
 }
 
 const viewPath = Path.join(
   __dirname,
   process.env.NODE_ENV !== 'production' ? 'views' : 'templates'
 );
+console.log('viewPath', viewPath);
 const viewConfig =
   process.env.NODE_ENV !== 'production'
     ? { jsx: HapiReactViews }
     : { js: HapiReactViews };
 console.log('viewPath', viewPath);
 
-const server = Hapi.server({
-  port: process.env.PORT,
-  //host: config.get('host'),
-  routes: {
-    files: {
-      relativeTo: Path.join(__dirname, 'public')
-    },
-    cors: {
-      origin: ['*'],
-
-      additionalHeaders: ['x-kakato', 'content-type']
-    }
-  }
-});
-
+let server;
+console.log('pre start');
 const start = async () => {
   try {
+    console.info('trying to start server');
+    server = Hapi.server({
+      port: process.env.PORT,
+      //host: config.get('host'),
+      routes: {
+        files: {
+          relativeTo: Path.join(__dirname, 'public')
+        },
+        cors: {
+          origin: ['*'],
+          additionalHeaders: ['x-kakato', 'content-type']
+        }
+      }
+    });
     // register Bell to have auth schema loaded
     await server.register([AuthCookie, AuthBasic, Bell]);
     server.state('session', {
@@ -87,12 +97,12 @@ const start = async () => {
     // register view engines
     server.views({
       engines: viewConfig,
-      compileOptions: {}, // optional
+
       relativeTo: __dirname,
       path: process.env.NODE_ENV !== 'production' ? 'views' : 'templates',
+
       compileOptions: {
-        layoutPath: viewPath,
-        layout: 'layout'
+        layoutPath: viewPath
       }
     });
 
@@ -121,19 +131,18 @@ const start = async () => {
       console.log('onPostHandler');
       return h.continue;
     });
-    server.ext('onPreResponse', (request, h) => {
-      console.log('onPreResponse');
-      return h.continue;
-    });
+
+    // server.ext('onPreResponse', CorsHeaders);
 
     //start server
     await server.start();
   } catch (err) {
-    console.log(err);
+    console.error('Error starting server', err);
     process.exit(1);
   }
 
   console.log('🚀 Server running at:', server.info.uri);
+  /*
   Updater()
     .then(() => {
       console.info('updated');
@@ -142,10 +151,11 @@ const start = async () => {
       console.error('updater error', err);
       rollbar.error(err);
     });
+    */
 };
 
 process.on('SIGINT', async () => {
-  console.log('stopping server');
+  console.warn('stopping server');
   try {
     await server.stop({ timeout: 10000 });
     console.log('hapi server stopped 🛑');
@@ -155,5 +165,5 @@ process.on('SIGINT', async () => {
     process.exit(1);
   }
 });
-
+console.info('START');
 start();
