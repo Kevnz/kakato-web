@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "preprod": "npm run babel",
     "prod": "cross-env NODE_ENV=production node ./src/server",
-    "dev": "cross-env NODE_ENV=development nodemon ./src/server",
+    "dev": "cross-env NODE_ENV=development nodemon -e js,jsx ./src/server",
     "prestart": "npm run babel",
     "start": "cross-env NODE_ENV=production node ./src/server"
   },
@@ -40,6 +40,7 @@
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
     "@babel/register": "^7.8.3",
+    "@brightleaf/elements": "^1.9.0",
     "@brightleaf/grab": "^1.2.1",
     "@hapi/bell": "^11.1.0",
     "@hapi/good": "^8.2.4",
