@@ -45,12 +45,36 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/read.css',
+    config: {
+      handler: {
+        file: 'read.css'
+      }
+    }
+  },
+  {
+    method: 'GET',
     path: '/mini-dark.css',
     config: {
       handler: {
         file: 'mini-dark.css'
       }
     }
+  },
+  {
+    method: 'GET',
+    path: '/css/{path*}',
+    handler: { directory: { path: './' } }
+  },
+  {
+    method: 'GET',
+    path: '/imgs/{path*}',
+    handler: { directory: { path: './' } }
+  },
+  {
+    method: 'GET',
+    path: '/{path*}',
+    handler: { directory: { path: './' } }
   },
   {
     method: 'GET',
