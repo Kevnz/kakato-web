@@ -1,36 +1,36 @@
 'use strict';
 const React = require('react');
 const {
-  Card,
-  Section,
-  Button,
-  GridColumn,
-  GridRow
-} = require('mini.css-react');
+  Container, Section, Title, SubTitle
+} = require('@brightleaf/elements');
 const { If, Then, Else } = require('react-if');
 const Time = require('react-time').default;
-
+const ReadingLayout = require('./readingLayout')
 const { Component, Fragment } = React;
 
 const ReaderView = ({ link }) => {
   function createMarkup() {
-    return {__html: link.content };
+    return { __html: link.content };
   }
-    return (
-      <GridColumn
-        small={{ width: 12, order: 'first' }}
-        medium={{ width: 8, offset: 0 }}
-        large={{ width: 'fluid', offset: 0, order: 'normal' }}
-      >
-        <GridRow>
-          <Card className="large">
-             {link.name}
-          </Card>
-          <div dangerouslySetInnerHTML={createMarkup()} />
-        </GridRow>
-      </GridColumn>
-    );
-  }
+  return (
+    <ReadingLayout>
+      <div className="header reader-header reader-show-element">
+        <a className="domain reader-domain" href={link.url}>View</a>
+        <div className="domain-border"></div>
+        <h1 className="reader-title">{link.name}</h1>
+        <div className="credits reader-credits">{link.byline}</div>
+        <div className="meta-data">
+
+        </div>
+      </div>
+      <div className="content">
+
+        <div dangerouslySetInnerHTML={createMarkup()} id="readInner" className="moz-reader-content line-height4 reader-show-element" />
+
+      </div>
+    </ReadingLayout>
+  );
+}
 
 
 module.exports = ReaderView;
