@@ -24,11 +24,11 @@ if (process.env.NODE_ENV !== 'production') {
   console.info('maybe again?');
   //require('babel-polyfill');
   console.info('maybe again?');
-
-  require.extensions['.css'] = (m, filename) => {
-    console.log('.css');
-  };
 }
+
+require.extensions['.css'] = (m, filename) => {
+  console.info('.css', filename);
+};
 
 const viewPath = Path.join(
   __dirname,
