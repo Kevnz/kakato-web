@@ -5,7 +5,9 @@ const {
   Section,
   Button,
   Columns,
-  Column
+  Column,
+  Container,
+
 } = require('@brightleaf/elements');
 const Layout = require('./layout')
 const { If, Then, Else } = require('react-if');
@@ -15,7 +17,7 @@ const { Component, Fragment } = React;
 
 class HomeView extends Component {
   render() {
-    const links = this.props.links.map((link, index) => (<>
+    const links = this.props.links.reverse().map((link, index) => (<>
       <Card key={`link-key-${index}`}>
         <CardBody>
           <Title as={'p'} is="5">
@@ -54,13 +56,11 @@ class HomeView extends Component {
               {() => (
                 // will only be evaluated if the condition fails.
                 <Fragment>
-                  <a href="/login" className="button">
-                    Login
-                    </a>
-                  <a href="/account/new" className="button">
-                    {' '}
-                    Register{' '}
-                  </a>
+                  <br /><br />
+                  <Container>
+                    Please <a href="/login">Login</a> or{' '}
+                  <a href="/account/new">Register</a>
+                  </Container>
                 </Fragment>
               )}
             </Else>
